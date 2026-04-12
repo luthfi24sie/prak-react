@@ -1,0 +1,462 @@
+[
+  {
+    "id": 1,
+    "name": "Toyota Avanza",
+    "category": "MPV",
+    "status": "Available",
+    "pricePerDay": 350000,
+    "image": "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=800",
+    "description": "Mobil keluarga paling populer di Indonesia, hemat bahan bakar.",
+    "specifications": {
+      "fuel": "Gasoline",
+      "transmission": "Manual",
+      "seats": 7
+    },
+    "location": {
+      "city": "Jakarta",
+      "address": "Jl. Sudirman No. 10"
+    },
+    "performance": {
+      "topSpeed": "170 km/h",
+      "acceleration": "12s (0-100)",
+      "horsepower": "104 HP"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Honda CR-V",
+    "category": "SUV",
+    "status": "Available",
+    "pricePerDay": 800000,
+    "image": "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&q=80&w=800",
+    "description": "SUV premium dengan kenyamanan maksimal dan fitur keamanan canggih.",
+    "specifications": {
+      "fuel": "Gasoline",
+      "transmission": "Automatic",
+      "seats": 5
+    },
+    "location": {
+      "city": "Bandung",
+      "address": "Jl. Dago No. 45"
+    },
+    "performance": {
+      "topSpeed": "200 km/h",
+      "acceleration": "8.5s (0-100)",
+      "horsepower": "190 HP"
+    }
+  },
+  {
+    "id": 3,
+    "name": "BMW 3 Series",
+    "category": "Luxury",
+    "status": "Maintenance",
+    "pricePerDay": 2500000,
+    "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=800",
+    "description": "Sedan mewah dengan performa tinggi dan desain elegan.",
+    "specifications": {
+      "fuel": "Gasoline",
+      "transmission": "Automatic",
+      "seats": 5
+    },
+    "location": {
+      "city": "Surabaya",
+      "address": "Jl. Basuki Rahmat No. 12"
+    },
+    "performance": {
+      "topSpeed": "250 km/h",
+      "acceleration": "5.8s (0-100)",
+      "horsepower": "255 HP"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Mitsubishi Pajero Sport",
+    "category": "SUV",
+    "status": "Booked",
+    "pricePerDay": 1200000,
+    "image": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800",
+    "description": "SUV tangguh untuk medan off-road maupun on-road.",
+    "specifications": {
+      "fuel": "Diesel",
+      "transmission": "Automatic",
+      "seats": 7
+    },
+    "location": {
+      "city": "Medan",
+      "address": "Jl. Gatot Subroto No. 5"
+    },
+    "performance": {
+      "topSpeed": "180 km/h",
+      "acceleration": "10s (0-100)",
+      "horsepower": "181 HP"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Daihatsu Xenia",
+    "category": "MPV",
+    "status": "Available",
+    "pricePerDay": 320000,
+    "image": "https://images.unsplash.com/photo-1619682817481-e994891cd1f5?auto=format&fit=crop&q=80&w=800",
+    "description": "Pilihan ekonomis untuk perjalanan keluarga.",
+    "specifications": {
+      "fuel": "Gasoline",
+      "transmission": "Manual",
+      "seats": 7
+    },
+    "location": {
+      "city": "Semarang",
+      "address": "Jl. Pemuda No. 8"
+    },
+    "performance": {
+      "topSpeed": "165 km/h",
+      "acceleration": "13s (0-100)",
+      "horsepower": "97 HP"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Tesla Model 3",
+    "category": "Luxury",
+    "status": "Available",
+    "pricePerDay": 3500000,
+    "image": "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&q=80&w=800",
+    "description": "Mobil listrik tercanggih dengan fitur autopilot.",
+    "specifications": {
+      "fuel": "Electric",
+      "transmission": "Automatic",
+      "seats": 5
+    },
+    "location": {
+      "city": "Jakarta",
+      "address": "SCBD Lot 11"
+    },
+    "performance": {
+      "topSpeed": "225 km/h",
+      "acceleration": "4.4s (0-100)",
+      "horsepower": "283 HP"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Suzuki Ertiga",
+    "category": "MPV",
+    "status": "Available",
+    "pricePerDay": 380000,
+    "image": "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&q=80&w=800",
+    "description": "Kabin luas dan nyaman, sangat irit BBM.",
+    "specifications": {
+      "fuel": "Gasoline",
+      "transmission": "Automatic",
+      "seats": 7
+    },
+    "location": {
+      "city": "Yogyakarta",
+      "address": "Jl. Malioboro No. 20"
+    },
+    "performance": {
+      "topSpeed": "175 km/h",
+      "acceleration": "11.5s (0-100)",
+      "horsepower": "103 HP"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Toyota Fortuner",
+    "category": "SUV",
+    "status": "Booked",
+    "pricePerDay": 1300000,
+    "image": "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&q=80&w=800",
+    "description": "Gagah dan berwibawa di segala medan.",
+    "specifications": {
+      "fuel": "Diesel",
+      "transmission": "Automatic",
+      "seats": 7
+    },
+    "location": {
+      "city": "Makassar",
+      "address": "Jl. Pettarani No. 15"
+    },
+    "performance": {
+      "topSpeed": "185 km/h",
+      "acceleration": "9.8s (0-100)",
+      "horsepower": "148 HP"
+    }
+  },
+  {
+    "id": 9,
+    "name": "Honda Civic",
+    "category": "Sedan",
+    "status": "Available",
+    "pricePerDay": 900000,
+    "image": "https://images.unsplash.com/photo-1594070319944-7c0c63146b7c?auto=format&fit=crop&q=80&w=800",
+    "description": "Sedan sporty dengan handling yang presisi.",
+    "specifications": {
+      "fuel": "Gasoline",
+      "transmission": "Automatic",
+      "seats": 5
+    },
+    "location": {
+      "city": "Bali",
+      "address": "Jl. Sunset Road No. 100"
+    },
+    "performance": {
+      "topSpeed": "210 km/h",
+      "acceleration": "8.2s (0-100)",
+      "horsepower": "173 HP"
+    }
+  },
+  {
+    "id": 10,
+    "name": "Mercedes-Benz S-Class",
+    "category": "Luxury",
+    "status": "Maintenance",
+    "pricePerDay": 5000000,
+    "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=800",
+    "description": "Puncak kemewahan dan teknologi otomotif.",
+    "specifications": {
+      "fuel": "Gasoline",
+      "transmission": "Automatic",
+      "seats": 4
+    },
+    "location": {
+      "city": "Jakarta",
+      "address": "Jl. Thamrin No. 1"
+    },
+    "performance": {
+      "topSpeed": "250 km/h",
+      "acceleration": "4.6s (0-100)",
+      "horsepower": "429 HP"
+    }
+  },
+  {
+    "id": 11,
+    "name": "Hyundai Staria",
+    "category": "MPV",
+    "status": "Available",
+    "pricePerDay": 1500000,
+    "image": "https://images.unsplash.com/photo-1632245889029-e406fbdd34bc?auto=format&fit=crop&q=80&w=800",
+    "description": "MPV futuristik dengan kabin super luas.",
+    "specifications": {
+      "fuel": "Diesel",
+      "transmission": "Automatic",
+      "seats": 9
+    },
+    "location": {
+      "city": "Surabaya",
+      "address": "Jl. Gubeng No. 22"
+    },
+    "performance": {
+      "topSpeed": "185 km/h",
+      "acceleration": "12.4s (0-100)",
+      "horsepower": "175 HP"
+    }
+  },
+  {
+    "id": 12,
+    "name": "Mazda CX-5",
+    "category": "SUV",
+    "status": "Available",
+    "pricePerDay": 850000,
+    "image": "https://images.unsplash.com/photo-1542362567-b051c63b9a56?auto=format&fit=crop&q=80&w=800",
+    "description": "Desain Kodo yang cantik dan interior premium.",
+    "specifications": {
+      "fuel": "Gasoline",
+      "transmission": "Automatic",
+      "seats": 5
+    },
+    "location": {
+      "city": "Semarang",
+      "address": "Jl. Gajah Mada No. 12"
+    },
+    "performance": {
+      "topSpeed": "200 km/h",
+      "acceleration": "8.9s (0-100)",
+      "horsepower": "187 HP"
+    }
+  },
+  {
+    "id": 13,
+    "name": "Wuling Air EV",
+    "category": "Luxury",
+    "status": "Available",
+    "pricePerDay": 600000,
+    "image": "https://images.unsplash.com/photo-1675305151523-9669528d2238?auto=format&fit=crop&q=80&w=800",
+    "description": "Mobil listrik compact, lincah di kemacetan kota.",
+    "specifications": {
+      "fuel": "Electric",
+      "transmission": "Automatic",
+      "seats": 4
+    },
+    "location": {
+      "city": "Jakarta",
+      "address": "Jl. Rasuna Said No. 5"
+    },
+    "performance": {
+      "topSpeed": "100 km/h",
+      "acceleration": "N/A",
+      "horsepower": "40 HP"
+    }
+  },
+  {
+    "id": 14,
+    "name": "Toyota Alphard",
+    "category": "Luxury",
+    "status": "Booked",
+    "pricePerDay": 3000000,
+    "image": "https://images.unsplash.com/photo-1616455579100-2ceaa4eb2d37?auto=format&fit=crop&q=80&w=800",
+    "description": "Pilihan utama pejabat dan eksekutif.",
+    "specifications": {
+      "fuel": "Gasoline",
+      "transmission": "Automatic",
+      "seats": 7
+    },
+    "location": {
+      "city": "Bali",
+      "address": "Jl. Kuta No. 88"
+    },
+    "performance": {
+      "topSpeed": "180 km/h",
+      "acceleration": "10.5s (0-100)",
+      "horsepower": "296 HP"
+    }
+  },
+  {
+    "id": 15,
+    "name": "Nissan Terra",
+    "category": "SUV",
+    "status": "Available",
+    "pricePerDay": 1100000,
+    "image": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=800",
+    "description": "SUV bertenaga dengan suspensi yang sangat empuk.",
+    "specifications": {
+      "fuel": "Diesel",
+      "transmission": "Automatic",
+      "seats": 7
+    },
+    "location": {
+      "city": "Medan",
+      "address": "Jl. Adam Malik No. 2"
+    },
+    "performance": {
+      "topSpeed": "175 km/h",
+      "acceleration": "11s (0-100)",
+      "horsepower": "190 HP"
+    }
+  },
+  {
+    "id": 16,
+    "name": "Honda Brio",
+    "category": "Sedan",
+    "status": "Available",
+    "pricePerDay": 300000,
+    "image": "https://images.unsplash.com/photo-1606148632349-5381f23053e8?auto=format&fit=crop&q=80&w=800",
+    "description": "City car mungil, gesit dan sangat irit.",
+    "specifications": {
+      "fuel": "Gasoline",
+      "transmission": "Manual",
+      "seats": 5
+    },
+    "location": {
+      "city": "Bandung",
+      "address": "Jl. Braga No. 10"
+    },
+    "performance": {
+      "topSpeed": "150 km/h",
+      "acceleration": "12.5s (0-100)",
+      "horsepower": "89 HP"
+    }
+  },
+  {
+    "id": 17,
+    "name": "Lexus ES",
+    "category": "Luxury",
+    "status": "Available",
+    "pricePerDay": 4000000,
+    "image": "https://images.unsplash.com/photo-1552519507-81079362945d?auto=format&fit=crop&q=80&w=800",
+    "description": "Sedan mewah dengan kesenyapan kabin yang luar biasa.",
+    "specifications": {
+      "fuel": "Hybrid",
+      "transmission": "Automatic",
+      "seats": 5
+    },
+    "location": {
+      "city": "Jakarta",
+      "address": "Jl. Kebon Sirih No. 5"
+    },
+    "performance": {
+      "topSpeed": "180 km/h",
+      "acceleration": "8.9s (0-100)",
+      "horsepower": "215 HP"
+    }
+  },
+  {
+    "id": 18,
+    "name": "Kia Grand Carnival",
+    "category": "MPV",
+    "status": "Available",
+    "pricePerDay": 1800000,
+    "image": "https://images.unsplash.com/photo-1632245889029-e406fbdd34bc?auto=format&fit=crop&q=80&w=800",
+    "description": "MPV premium dengan kapasitas hingga 11 penumpang.",
+    "specifications": {
+      "fuel": "Diesel",
+      "transmission": "Automatic",
+      "seats": 11
+    },
+    "location": {
+      "city": "Yogyakarta",
+      "address": "Jl. Solo No. 45"
+    },
+    "performance": {
+      "topSpeed": "190 km/h",
+      "acceleration": "10.2s (0-100)",
+      "horsepower": "199 HP"
+    }
+  },
+  {
+    "id": 19,
+    "name": "Ford Ranger",
+    "category": "SUV",
+    "status": "Available",
+    "pricePerDay": 1400000,
+    "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&q=80&w=800",
+    "description": "Double cabin tangguh untuk petualangan.",
+    "specifications": {
+      "fuel": "Diesel",
+      "transmission": "Automatic",
+      "seats": 5
+    },
+    "location": {
+      "city": "Balikpapan",
+      "address": "Jl. Sudirman No. 20"
+    },
+    "performance": {
+      "topSpeed": "175 km/h",
+      "acceleration": "11s (0-100)",
+      "horsepower": "210 HP"
+    }
+  },
+  {
+    "id": 20,
+    "name": "Toyota Camry",
+    "category": "Sedan",
+    "status": "Maintenance",
+    "pricePerDay": 1200000,
+    "image": "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&q=80&w=800",
+    "description": "Sedan eksekutif yang nyaman dan berkelas.",
+    "specifications": {
+      "fuel": "Gasoline",
+      "transmission": "Automatic",
+      "seats": 5
+    },
+    "location": {
+      "city": "Jakarta",
+      "address": "Jl. Imam Bonjol No. 1"
+    },
+    "performance": {
+      "topSpeed": "210 km/h",
+      "acceleration": "8.5s (0-100)",
+      "horsepower": "204 HP"
+    }
+  }
+]
