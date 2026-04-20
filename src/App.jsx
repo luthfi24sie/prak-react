@@ -1,27 +1,60 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Home';
-import HelloWorld from './pertemuan-2/HelloWorld';
-import Pertemuan3 from './Pertemuan-3/Pertemuan3';
-import CarRental from './Pertemuan-4/CarRental';
-import Pertemuan5 from './pertemuan-5/main';
+import React from 'react';
+import { Routes, Route } from "react-router-dom";
+import Sidebar from './layouts/Sidebar';
+import Header from './layouts/Header';
+import Dashboard from './pages/Dashboard';
+import Orders from './pages/Orders';
+import Customers from './pages/Customers';
+import ErrorPage from './pages/ErrorPage';
+import './assets/tailwind.css';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Halaman Awal - Hanya Tampilan Awal FMI App */}
-        <Route path="/" element={<Home />} />
-        
-        {/* Akses Terpisah per Pertemuan */}
-        <Route path="/pertemuan-2" element={<HelloWorld />} />
-        <Route path="/pertemuan-3" element={<Pertemuan3 />} />
-        <Route path="/pertemuan-4" element={<CarRental />} />
-        <Route path="/pertemuan-5" element={<Pertemuan5 />} />
-        
-        {/* Fallback to home */}
-        <Route path="*" element={<Home />} />
-      </Routes>
-    </Router>
+    <div id="app-container" className="bg-gray-100 min-h-screen flex">
+      <div id="layout-wrapper" className="flex flex-row flex-1">
+        <Sidebar />
+        <div id="main-content" className="flex-1 p-4 ml-64">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/customers" element={<Customers />} />
+            
+            {/* Error Routes */}
+            <Route path="/error-400" element={
+              <ErrorPage 
+                errorCode="400" 
+                description="Bad Request! Permintaan Anda tidak dapat dipahami oleh server." 
+                imageUrl="https://illustrations.popsy.co/amber/resistance-band-training.svg"
+              />
+            } />
+            <Route path="/error-401" element={
+              <ErrorPage 
+                errorCode="401" 
+                description="Unauthorized! Anda tidak memiliki izin untuk mengakses halaman ini." 
+                imageUrl="https://illustrations.popsy.co/amber/lock.svg"
+              />
+            } />
+            <Route path="/error-403" element={
+              <ErrorPage 
+                errorCode="403" 
+                description="Forbidden! Akses ke halaman ini dilarang." 
+                imageUrl="https://illustrations.popsy.co/amber/shrugging-man.svg"
+              />
+            } />
+            
+            {/* 404 Route */}
+            <Route path="*" element={
+              <ErrorPage 
+                errorCode="404" 
+                description="Halaman Tidak Ditemukan! Maaf, halaman yang Anda cari tidak tersedia." 
+                imageUrl="https://illustrations.popsy.co/amber/crashed-error.svg"
+              />
+            } />
+          </Routes>
+        </div>
+      </div>
+    </div>
   );
 }
 
