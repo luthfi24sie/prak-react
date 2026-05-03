@@ -1,4 +1,5 @@
 import { useState } from "react"
+import axios from "axios"
 import { BsFillExclamationDiamondFill } from "react-icons/bs"
 import { ImSpinner2 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
@@ -25,33 +26,37 @@ export default function Login() {
 		        e.preventDefault()
 		
 		        setLoading(true)
-		        setError(false)
-		
-            axios
+		        setError("")
+
+                if (!dataForm.email.trim() || !dataForm.password.trim()) {
+                    setError("Username and password required")
+                    setLoading(false)
+                    return
+                }
+
+                axios
 		            .post("https://dummyjson.com/user/login", {
 		                username: dataForm.email,
 		                password: dataForm.password,
 		            })
 		            .then((response) => {
-		                // Jika status bukan 200, tampilkan pesan error
 		                if (response.status !== 200) {
-		                    setError(response.data.message);
-		                    return; 
+		                    setError(response.data?.message || "An error occurred")
+		                    return 
 		                }
-		
-		                // Redirect ke dashboard jika login sukses
-		                navigate("/");
+
+		                navigate("/")
 		            })
 		            .catch((err) => {
 		                if (err.response) {
-		                    setError(err.response.data.message || "An error occurred");
+		                    setError(err.response.data?.message || "An error occurred")
 		                } else {
-		                    setError(err.message || "An unknown error occurred");
+		                    setError(err.message || "An unknown error occurred")
 		                }
 		            })
 		            .finally(() => {
-		                setLoading(false); 
-		            });
+		                setLoading(false) 
+		            })
 	
 		    }
             	/* error & loading status */
@@ -74,17 +79,23 @@ export default function Login() {
                 Welcome Back 👋
             </h2>
 
-            <form>
+            {errorInfo}
+            {loadingInfo}
+
+            <form onSubmit={handleSubmit}>
                 <div className="mb-5">
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Email Address
+                        Username
                     </label>
                     <input
                         type="text"
                         id="email"
+                        name="email"
+                        value={dataForm.email}
+                        onChange={handleChange}
                         className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm
                             placeholder-gray-400"
-                        placeholder="you@example.com"
+                        placeholder="emilys"
                     />
                 </div>
                 <div className="mb-6">
@@ -94,6 +105,9 @@ export default function Login() {
                     <input
                         type="password"
                         id="password"
+                        name="password"
+                        value={dataForm.password}
+                        onChange={handleChange}
                         className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm
                             placeholder-gray-400"
                         placeholder="********"
@@ -101,6 +115,7 @@ export default function Login() {
                 </div>
                 <button
                     type="submit"
+                    disabled={loading}
                     className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4
                         rounded-lg transition duration-300"
                 >
