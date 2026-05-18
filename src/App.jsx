@@ -12,7 +12,7 @@ import ErrorPage from './pages/main/ErrorPage';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Forgot from './pages/auth/Forgot';
-
+import Components from './pages/main/Components';
 const Products = React.lazy(() => import("./pages/main/Products"));
 const ProductDetail = React.lazy(() => import("./pages/main/ProductDetail"));
 function App() {
@@ -26,7 +26,7 @@ function App() {
           <Route path="/customers/:id" element={<CustomerDetail />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetail />} />
-
+          <Route path="/components" element={<Components />} />
           <Route path="/error-400" element={
             <ErrorPage
               errorCode="400"

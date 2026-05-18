@@ -6,6 +6,7 @@ import products from "./products.json";
 export default function Products() {
     const [query, setQuery] = useState("");
 
+    
     const filtered = useMemo(() => {
         const q = query.trim().toLowerCase();
         if (!q) return products;
