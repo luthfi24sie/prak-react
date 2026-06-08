@@ -69,6 +69,11 @@ export default function Sidebar() {
               <FaBoxOpen className="mr-2 text-xl" />
               <span className="text-sm tracking-wide">Fitur XYZ</span>
             </NavLink>
+            </li><li>
+              <NavLink to="/notes" className={menuClass}>
+              <FaBoxOpen className="mr-2 text-xl" />
+              <span className="text-sm tracking-wide">Notes</span>
+            </NavLink>
             </li>
         </ul>
 
