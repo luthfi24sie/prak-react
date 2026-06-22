@@ -1,9 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FaBell, FaSearch } from "react-icons/fa"; 
+import { FaBell, FaSearch, FaSignOutAlt } from "react-icons/fa"; 
 import { FcAreaChart } from "react-icons/fc"; 
 import { SlSettings } from "react-icons/sl"; 
+import { useAuth } from "../lib/AuthContext";
+import { useNavigate } from "react-router-dom"; 
 
 export default function Header() { 
+    const { profile, signOut } = useAuth()
+    const navigate = useNavigate()
     const [profileName, setProfileName] = useState(() => localStorage.getItem("pfl_profile_name") || "Luthfi Farhan")
     const [profileAvatar, setProfileAvatar] = useState(() => localStorage.getItem("pfl_profile_avatar") || "https://avatar.iran.liara.run/public/28")
     const [isProfileOpen, setIsProfileOpen] = useState(false)
@@ -81,6 +85,14 @@ export default function Header() {
                 </div> 
                 <div id="settings-icon" className="p-3 bg-red-100 rounded-2xl text-red-500 cursor-pointer hover:bg-red-200 transition-colors"> 
                     <SlSettings className="text-xl" /> 
+                </div>
+                <div
+                    id="logout-icon"
+                    onClick={async () => { await signOut(); navigate("/login") }}
+                    className="p-3 bg-red-100 rounded-2xl text-red-500 cursor-pointer hover:bg-red-200 transition-colors"
+                    title="Logout"
+                >
+                    <FaSignOutAlt className="text-xl" />
                 </div> 
               
 

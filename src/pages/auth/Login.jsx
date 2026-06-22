@@ -1,11 +1,10 @@
 import { useState } from "react"
-import axios from "axios"
+import { supabase } from "../../lib/supabaseClient"
 import { BsFillExclamationDiamondFill } from "react-icons/bs"
 import { ImSpinner2 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
 
 export default function Login() {
-    	/* navigate, state & handleChange*/
     const navigate = useNavigate() 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
@@ -21,58 +20,71 @@ export default function Login() {
             [name]: value,
         })
     }
-    	/* process form */
-		const handleSubmit = async (e) => {
-		        e.preventDefault()
-		
-		        setLoading(true)
-		        setError("")
 
-                if (!dataForm.email.trim() || !dataForm.password.trim()) {
-                    setError("Username and password required")
-                    setLoading(false)
-                    return
-                }
+    const handleSubmit = async (e) => {
+        e.preventDefault()
 
-                axios
-		            .post("https://dummyjson.com/user/login", {
-		                username: dataForm.email,
-		                password: dataForm.password,
-		            })
-		            .then((response) => {
-		                if (response.status !== 200) {
-		                    setError(response.data?.message || "An error occurred")
-		                    return 
-		                }
+        setLoading(true)
+        setError("")
 
-		                navigate("/")
-		            })
-		            .catch((err) => {
-		                if (err.response) {
-		                    setError(err.response.data?.message || "An error occurred")
-		                } else {
-		                    setError(err.message || "An unknown error occurred")
-		                }
-		            })
-		            .finally(() => {
-		                setLoading(false) 
-		            })
-	
-		    }
-            	/* error & loading status */
-		const errorInfo = error ? (
-		    <div className="bg-red-200 mb-5 p-5 text-sm font-light text-gray-600 rounded flex items-center">
-		        <BsFillExclamationDiamondFill className="text-red-600 me-2 text-lg" />
-		        {error}
-		    </div>
-		) : null
-		
-		const loadingInfo = loading ? (
-		    <div className="bg-gray-200 mb-5 p-5 text-sm rounded flex items-center">
-		        <ImSpinner2 className="me-2 animate-spin" />
-		        Mohon Tunggu...
-		    </div>
-		) : null
+        if (!dataForm.email.trim() || !dataForm.password.trim()) {
+            setError("Email and password required")
+            setLoading(false)
+            return
+        }
+
+        try {
+            const { data, error: authError } = await supabase.auth.signInWithPassword({
+                email: dataForm.email,
+                password: dataForm.password,
+            })
+
+            if (authError) {
+                setError(authError.message)
+                setLoading(false)
+                return
+            }
+
+            // Baca role dari tabel profiles
+            const { data: profile, error: profileError } = await supabase
+                .from('profiles')
+                .select('role')
+                .eq('id', data.user.id)
+                .single()
+
+            if (profileError) {
+                setError("Gagal membaca profil user")
+                setLoading(false)
+                return
+            }
+
+            // Redirect berdasarkan role
+            if (profile.role === 'admin') {
+                navigate("/")
+            } else {
+                navigate("/member/dashboard")
+            }
+        } catch (err) {
+            setError(err.message || "Terjadi kesalahan")
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const errorInfo = error ? (
+        <div className="bg-red-200 mb-5 p-5 text-sm font-light text-gray-600 rounded flex items-center">
+            <BsFillExclamationDiamondFill className="text-red-600 me-2 text-lg" />
+            {error}
+        </div>
+    ) : null
+
+    const loadingInfo = loading ? (
+        <div className="bg-gray-200 mb-5 p-5 text-sm rounded flex items-center">
+            <ImSpinner2 className="me-2 animate-spin" />
+            Mohon Tunggu...
+        </div>
+    ) : null
+
     return (
         <div>
             <h2 className="text-2xl font-semibold text-gray-700 mb-6 text-center">
@@ -85,17 +97,17 @@ export default function Login() {
             <form onSubmit={handleSubmit}>
                 <div className="mb-5">
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Username
+                        Email
                     </label>
                     <input
-                        type="text"
+                        type="email"
                         id="email"
                         name="email"
                         value={dataForm.email}
                         onChange={handleChange}
                         className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg shadow-sm
                             placeholder-gray-400"
-                        placeholder="emilys"
+                        placeholder="user@example.com"
                     />
                 </div>
                 <div className="mb-6">

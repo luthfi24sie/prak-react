@@ -3,7 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import './assets/tailwind.css';
 import MainLayout from './layouts/MainLayout';
 import AuthLayout from './layouts/AuthLayout';
+import MemberLayout from './layouts/MemberLayout';
 import Loading from './components/Loading';
+import ProtectedRoute from './components/ProtectedRoute';
 import Dashboard from './pages/main/Dashboard';
 import Orders from './pages/main/Orders';
 import Customers from './pages/main/Customers';
@@ -14,14 +16,19 @@ import Register from './pages/auth/Register';
 import Forgot from './pages/auth/Forgot';
 import Components from './pages/main/Components';
 import FiturXyz from './pages/main/FiturXyz';
-import Note from './pages/main/Note';  
+import Note from './pages/main/Note';
+import MemberDashboard from './pages/member/MemberDashboard';
+import CreateOrder from './pages/member/CreateOrder';
+import MemberOrders from './pages/member/MemberOrders';
 const Products = React.lazy(() => import("./pages/main/Products"));
 const ProductDetail = React.lazy(() => import("./pages/main/ProductDetail"));
+
 function App() {
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
-        <Route element={<MainLayout />}>
+        {/* Admin Routes - Protected */}
+        <Route element={<ProtectedRoute requiredRole="admin"><MainLayout /></ProtectedRoute>}>
           <Route path="/" element={<Dashboard />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/customers" element={<Customers />} />
@@ -61,6 +68,14 @@ function App() {
           } />
         </Route>
 
+        {/* Member Routes - Protected */}
+        <Route element={<ProtectedRoute requiredRole="member"><MemberLayout /></ProtectedRoute>}>
+          <Route path="/member/dashboard" element={<MemberDashboard />} />
+          <Route path="/member/create-order" element={<CreateOrder />} />
+          <Route path="/member/orders" element={<MemberOrders />} />
+        </Route>
+
+        {/* Auth Routes */}
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

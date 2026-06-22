@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../lib/AuthContext";
 import { 
   FaHome, 
   FaListUl, 
@@ -8,10 +9,15 @@ import {
   FaPlus,
   FaExclamationTriangle,
   FaLock,
-  FaBan
+  FaBan,
+  FaShoppingCart,
+  FaTachometerAlt
 } from "react-icons/fa";
 
 export default function Sidebar() {
+  const { profile } = useAuth()
+  const isAdmin = profile?.role === 'admin'
+
   const menuClass = ({ isActive }) => 
     `flex cursor-pointer items-center rounded-xl p-4 space-x-2 transition-all 
     ${isActive ? 
@@ -33,76 +39,105 @@ export default function Sidebar() {
       <div id="sidebar-menu" className="flex-grow mt-4 px-4">
         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-4 mb-2">Main Menu</p>
         <ul id="menu-list" className="space-y-2 mb-6">
-          <li>
-            <NavLink to="/" className={menuClass}>
-              <FaHome className="mr-2 text-xl" />
-              <span className="text-sm tracking-wide">Dashboard</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/orders" className={menuClass}>
-              <FaListUl className="mr-2 text-xl" />
-              <span className="text-sm tracking-wide">Orders</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/customers" className={menuClass}>
-              <FaUsers className="mr-2 text-xl" />
-              <span className="text-sm tracking-wide">Customers</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/products" className={menuClass}>
-              <FaBoxOpen className="mr-2 text-xl" />
-              <span className="text-sm tracking-wide">Products</span>
-            </NavLink>
-          </li>
-           <li>
-            <NavLink to="/components" className={menuClass}>
-              <FaBoxOpen className="mr-2 text-xl" />
-              <span className="text-sm tracking-wide">Components</span>
-            </NavLink>
-            
-          </li>
-            <li>
-              <NavLink to="/fitur-xyz" className={menuClass}>
-              <FaBoxOpen className="mr-2 text-xl" />
-              <span className="text-sm tracking-wide">Fitur XYZ</span>
-            </NavLink>
-            </li><li>
-              <NavLink to="/notes" className={menuClass}>
-              <FaBoxOpen className="mr-2 text-xl" />
-              <span className="text-sm tracking-wide">Notes</span>
-            </NavLink>
-            </li>
+          {isAdmin ? (
+            <>
+              <li>
+                <NavLink to="/" end className={menuClass}>
+                  <FaHome className="mr-2 text-xl" />
+                  <span className="text-sm tracking-wide">Dashboard</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/orders" className={menuClass}>
+                  <FaListUl className="mr-2 text-xl" />
+                  <span className="text-sm tracking-wide">Orders</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/customers" className={menuClass}>
+                  <FaUsers className="mr-2 text-xl" />
+                  <span className="text-sm tracking-wide">Customers</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/products" className={menuClass}>
+                  <FaBoxOpen className="mr-2 text-xl" />
+                  <span className="text-sm tracking-wide">Products</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/components" className={menuClass}>
+                  <FaBoxOpen className="mr-2 text-xl" />
+                  <span className="text-sm tracking-wide">Components</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/fitur-xyz" className={menuClass}>
+                  <FaBoxOpen className="mr-2 text-xl" />
+                  <span className="text-sm tracking-wide">Fitur XYZ</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/notes" className={menuClass}>
+                  <FaBoxOpen className="mr-2 text-xl" />
+                  <span className="text-sm tracking-wide">Notes</span>
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <NavLink to="/member/dashboard" className={menuClass}>
+                  <FaTachometerAlt className="mr-2 text-xl" />
+                  <span className="text-sm tracking-wide">Dashboard</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/member/create-order" className={menuClass}>
+                  <FaShoppingCart className="mr-2 text-xl" />
+                  <span className="text-sm tracking-wide">Buat Pesanan</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/member/orders" className={menuClass}>
+                  <FaListUl className="mr-2 text-xl" />
+                  <span className="text-sm tracking-wide">History Pesanan</span>
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
 
-        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-4 mb-2">Error Pages</p>
-        <ul className="space-y-2">
-          <li>
-            <NavLink to="/error-400" className={menuClass}>
-              <FaExclamationTriangle className="mr-2 text-xl" />
-              <span className="text-sm tracking-wide">Error 400</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/error-401" className={menuClass}>
-              <FaLock className="mr-2 text-xl" />
-              <span className="text-sm tracking-wide">Error 401</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/error-403" className={menuClass}>
-              <FaBan className="mr-2 text-xl" />
-              <span className="text-sm tracking-wide">Error 403</span>
-            </NavLink>
-          </li>
-        </ul>
+        {isAdmin && (
+          <>
+            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-4 mb-2">Error Pages</p>
+            <ul className="space-y-2">
+              <li>
+                <NavLink to="/error-400" className={menuClass}>
+                  <FaExclamationTriangle className="mr-2 text-xl" />
+                  <span className="text-sm tracking-wide">Error 400</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/error-401" className={menuClass}>
+                  <FaLock className="mr-2 text-xl" />
+                  <span className="text-sm tracking-wide">Error 401</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/error-403" className={menuClass}>
+                  <FaBan className="mr-2 text-xl" />
+                  <span className="text-sm tracking-wide">Error 403</span>
+                </NavLink>
+              </li>
+            </ul>
+          </>
+        )}
       </div>
 
       {/* Footer */}
       <div id="sidebar-footer" className="p-8 mt-auto flex flex-col gap-4">
-        <div id="footer-card" className="bg-hijau px-4 py-2 rounded-md shadow-lg mb-10 flex items-center">
+        <div id="footer-card" className="bg-hijau px-4 py-2 rounded-md shadow-lg mb-10 flex items-center relative">
           <div id="footer-text" className="text-white text-sm">
             <span>Please organize your menus through button below!</span>
             <div id="add-menu-button" className="flex justify-center items-center p-2 mt-3 bg-white rounded-md space-x-2">
@@ -111,6 +146,11 @@ export default function Sidebar() {
             </div>
           </div>
           <img id="footer-avatar" src="https://avatar.iran.liara.run/public/28" className="w-20 rounded-full" alt="Avatar" />
+          {profile && (
+            <div className="absolute bottom-2 left-4 text-white text-xs font-bold">
+              {profile.full_name || 'Admin'}
+            </div>
+          )}
         </div>
         
         <div className="flex flex-col gap-1">
